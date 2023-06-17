@@ -1,13 +1,13 @@
 package com.medical.medicalshop
 
-import com.medical.medicalshop.user.User
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
+@EnableConfigurationProperties(MedicalShopProperties::class)
 class MedicalShopApplication
 
 fun main(args: Array<String>) {
-	val user = User();
-	runApplication<MedicalShopApplication>(*args)
+    runApplication<MedicalShopApplication>(*args)
 }
