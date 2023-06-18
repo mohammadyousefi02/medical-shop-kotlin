@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.medical.medicalshop.cartItem.CartItem
 import com.medical.medicalshop.order.Order
+import com.medical.medicalshop.save.Save
 import jakarta.persistence.*
 
 @Entity
@@ -29,5 +30,10 @@ class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonIgnoreProperties("user")
-    private val orders: List<Order>? = null
+    var orders: List<Order>? = null
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonIgnoreProperties("user")
+    var saves: List<Save>? = null
 }
