@@ -1,6 +1,9 @@
 package com.medical.medicalshop.user
 
 import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonInclude
+import com.medical.medicalshop.cartItem.CartItem
 import jakarta.persistence.*
 
 @Entity
@@ -16,4 +19,9 @@ class User {
     @JsonIgnore
     var password: String = ""
     var email: String = ""
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonIgnoreProperties("user")
+    var cart: List<CartItem>? = null
 }
